@@ -1,0 +1,15 @@
+{
+  "name": "data-algo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "this is a project that contains data structure and algorithm implementations in typescript",
+  "dependencies": {
+    "typescript": "^5.8.2"
+  }
+}
