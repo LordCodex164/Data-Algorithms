@@ -43,7 +43,7 @@ print(squared, ">>s")
 numbers = [1, 2, 3, 4]
 
 for num in reversed(numbers):
-    print(num, "reversed numbers")
+    print(num, "reversed numbers2.1")
 
 reversed_squared = [n * n for n in reversed(numbers)]
 
@@ -52,13 +52,22 @@ print(">>r", reversed_squared)
 #Looping in reverse without reverse()
 
 def reverse_list(arr):
-    left = 0
-    right = len(arr - 1)
+
+    print
+    left = 0;
+    right = len(arr) - 1
 
     while left < right:
         arr[left], arr[right] = arr[right], arr[left]
-        left += 1
+        left +=1;
         right -=1
+    return arr
+
+print(reverse_list(numbers), "reversed_numbers2.2")
+
+# Pattern: two pointers
+# In-place: yes
+# Time: O(n)
 
 #6. Remove Duplicates
 
@@ -68,11 +77,51 @@ def reverse_list(arr):
 # Example:
 dup = [1, 2, 2, 3, 1]  
 
+def remove_duplicates(arr):
+    seen = set()
 
+    result = []
+
+    for num in arr:
+        if num not in seen:
+            seen.add(num)
+            result.append(num)
+    return result
+
+print(remove_duplicates(dup), "dup2.3")
 
 # Concepts: membership check, list building
 
 # 7. Count Character Frequency
+
+letter = "hello"
+
+def get_character_count(word):
+    count = {}
+
+    for s in word:
+        if s in count:
+            count[s] += 1
+        else:
+            count[s] = 1
+        
+    return count
+
+print(get_character_count(letter), "char_count2.4")
+
+def get_character_index_count(word):
+    print("w", word)
+    count = {}
+
+    for i in range(len(word)):
+        if i in count:
+            count[i] += 1
+        else:
+            count[i] = 1
+    
+    return count
+
+print(get_character_index_count(letter), "char_index_count2.5")
 
 # Problem:
 # Given a string, return a dictionary showing how many times each character appears.
