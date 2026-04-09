@@ -10,6 +10,7 @@ right = len(arr) - 1
 
 while left < right:
     total = arr[left] + arr[right]
+
     if total == target:
         print(f"{arr[left]} + {arr[right]} = {target}")
         break;
@@ -18,7 +19,6 @@ while left < right:
     else:
         right -=1
     
-
 word = "sayyab"
 
 
@@ -26,39 +26,44 @@ def palindrome(word):
     left = 0
     right = len(word) - 1
 
-    is_palindrome = True
-    
+    is_palindrome = False
+
     while left < right:
-        if word[left] != word[right]: 
+        if word[left] != word[right]:
             is_palindrome = False
-            break;
+            break
+        elif word[left] == word[right]:
+            is_palindrome = True
         left +=1
-        right -= 1
+        right -=1
+    
     return is_palindrome
+        
 
 print("is_palindrome", palindrome(word))
 
 numbers = [5, 6, 1, 7]
 
-def findHighestNum(nums):
-    left = 0
-    right = len(nums) - 1
 
-    max = 0
+def highest_num(nums):
+    left = 0;
+    right = len(nums) - 1
+    
+    max = 0;
 
     while left < right:
-        if nums[left] > nums[right]:
-            if max < nums[left]:
-                max = nums[left]
-        elif nums[right] > nums[left]:
+        if nums[left] < nums[right]:
             if max < nums[right]:
                 max = nums[right]
-        left +=1
-        right -=1 
-        print("max", max)
-        return max
+        elif nums[left] > nums[right]:
+            if max < nums[left]:
+                max = nums[right]
+        left +=1 
+        right -=1
+    return max
 
-print("highest number", findHighestNum(numbers))
+
+print("highest number", highest_num(numbers))
 
 nums = [2, 1, 5, 1, 3, 2]
 
@@ -66,12 +71,15 @@ nums = [2, 1, 5, 1, 3, 2]
 
 k = 3
 
-window_sum = sum(nums[:3])
-max_sum = window_sum
+def find_max_sum(k, arr):
+    current_window = sum(nums[:k])
 
-#3 to 8
-for i in range(k, max_sum):
-    window_sum += nums[i] - nums[i-k]
-    max_sum = max(max_sum, window_sum)
+    max_sum = current_window
 
-print("window", window_sum)
+    for i in range(k, len(arr)):
+        current_window = current_window + arr[i] - arr[i -k]
+        max_sum = max(max_sum, current_window)
+    
+    return max_sum
+
+print("max_sum", find_max_sum(k, nums))
